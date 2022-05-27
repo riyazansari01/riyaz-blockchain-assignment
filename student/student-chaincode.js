@@ -16,38 +16,38 @@ class StudentContract extends Contract {
         
         const students = [
             {
-                ID: 'student1',
-                FirstName: 'Rohit',
-                LastName: 'kumar',
-                Email: 'rohit@gmail.com',
-                MobileNo: 12345,
-                Address: 'xyz',
-                City: 'Punjab'
+                id: 'student1',
+                firstName: 'Rohit',
+                lastName: 'kumar',
+                email: 'rohit@gmail.com',
+                mobileNo: 12345,
+                address: 'xyz',
+                city: 'Punjab'
             },
             {
-                ID: 'student2',
-                FirstName: 'Sajan',
-                LastName: 'kumar',
-                Email: 'sajan@gmail.com',
-                MobileNo: 12345,
-                Address: 'abc',
-                City: 'Punjab'
+                id: 'student2',
+                firstName: 'Sajan',
+                lastName: 'kumar',
+                email: 'sajan@gmail.com',
+                mobileNo: 12345,
+                address: 'abc',
+                city: 'Punjab'
             },
             {
-                ID: 'student3',
-                FirstName: 'Yatin',
-                LastName: 'mehndiratta',
-                Email: 'yatin@gmail.com',
-                MobileNo: 12345,
-                Address: 'kww',
-                City: 'Punjab'
+                id: 'student3',
+                firstName: 'Yatin',
+                lastName: 'mehndiratta',
+                email: 'yatin@gmail.com',
+                mobileNo: 12345,
+                address: 'kww',
+                city: 'Punjab'
             },
         ];
 
         for (const student of students) {
             student.docType = 'student';
-            await ctx.stub.putState(student.ID, Buffer.from(JSON.stringify(student)));
-            console.info(`Student ${student.ID} initialized`);
+            await ctx.stub.putState(student.id, Buffer.from(JSON.stringify(student)));
+            console.info(`Student ${student.id} initialized`);
         }
         console.info('============= END : Initialize Ledger ===========');
     }
@@ -62,13 +62,13 @@ class StudentContract extends Contract {
         }
 
         const student = {
-            ID: id,
-            FirstName: firstName,
-            LastName: lastName,
-            Email: email,
-            MobileNo: mobile_no,
-            Address: address,
-            City: city,
+            id: id,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            mobileNo: mobile_no,
+            address: address,
+            city: city,
         };
         await ctx.stub.putState(id, Buffer.from(JSON.stringify(student)));
         return JSON.stringify(student);
@@ -96,13 +96,13 @@ class StudentContract extends Contract {
 
         // overwriting original student details with new student Information
         const updatedStudent = {
-            ID: id,
-            FirstName: firstName,
-            LastName: lastName,
-            Email: email,
-            MobileNo: mobile_no,
-            Address: address,
-            City: city,
+            id: id,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            mobileNo: mobile_no,
+            address: address,
+            city: city,
         };
         return ctx.stub.putState(id, Buffer.from(JSON.stringify(updatedStudent)));
     }
